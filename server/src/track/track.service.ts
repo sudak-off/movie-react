@@ -17,8 +17,9 @@ export class TrackService {
         return track;
     }
 
-    async get() {
-
+    async getAll(): Promise<Track[]> {
+        const tracks = await this.trackModel.find()
+        return tracks;
     }
 
     async getOne() {

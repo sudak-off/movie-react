@@ -15,7 +15,7 @@ export class TrackController {
 
     @Get()
     get() {
-        return 'All work'
+        return this.trackService.getAll()
     }
 
     getOne() {
