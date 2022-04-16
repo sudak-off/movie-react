@@ -1,10 +1,13 @@
 import { Button, Grid, StepLabel, TextField } from '@mui/material'
 import React from 'react'
+import FileUpload from '../../components/FileUpload'
 import StepWrapper from '../../components/StepWrapper'
 import { MainLayout } from '../../layouts/MainLayout'
 
 const Create = () => {
     const [activeStep, setActiveStep] = React.useState(0)
+    const [picture, setPicture] = React.useState(null)
+    const [audio, setAudio] = React.useState(null)
 
     const next = () => {
         if (activeStep !== 2) {
@@ -38,10 +41,14 @@ const Create = () => {
                     </Grid>
                 }
                 {activeStep === 1 &&
-                    <h1>Step 2</h1>
+                    <FileUpload setFile={setPicture} accept='image/*' >
+                        <Button>Загрузите обложку</Button>
+                    </FileUpload>
                 }
                 {activeStep === 2 &&
-                    <h1>Step 3</h1>
+                    <FileUpload setFile={setAudio} accept='audio/*' >
+                        <Button>Загрузите дорожку</Button>
+                    </FileUpload>
                 }
             </StepWrapper>
             <Grid container justifyContent="space-between">
